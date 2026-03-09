@@ -1,6 +1,5 @@
 import os
 import shutil
-import argparse
 
 
 
@@ -13,7 +12,7 @@ def get_folder_name(ext_list, ext):
 
 
 
-directory = "C:/Users/dell/Documents/GitHub/File Organizer/test_folder"
+directory = "./example_folder"
 
 extensions = {
     "Images": [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".tiff", ".tif", ".webp", ".svg", ".heic", ".heif", ".ico", ".raw", ".psd", ".ai", ".eps"],
