@@ -5,9 +5,9 @@ import argparse
 
 
 
-def get_folder_name(dict, value):
-    for key, v in dict.items():
-        if value in v:
+def get_folder_name(ext_list, ext):
+    for key, value in ext_list.items():
+        if ext in value:
             return key
     return None
 
@@ -31,6 +31,17 @@ extensions = {
     "Disk_Images": [".iso", ".img", ".dmg"],
     "Torrents": [".torrent"]
 }
+
+
+for folder in os.listdir(directory):
+    path = os.path.join(directory, folder)
+    if not os.path.isfile(path):
+        if(folder == "Others"):
+            for file in os.listdir(path):
+                file_path = os.path.join(path, file)
+                dir_path = os.path.join(directory, file)
+                shutil.move(file_path, dir_path)
+
 
 all_ext = set()
 for v in extensions.values():
