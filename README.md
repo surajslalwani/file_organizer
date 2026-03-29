@@ -1,8 +1,8 @@
 # Smart File Organizer
 
-A simple Python tool that automatically organizes files in a directory based on their file extensions.
+A Python CLI tool that automatically organizes files in a directory based on their file extensions.
 
-The script scans a folder, detects file types, and moves them into categorized folders such as **Images, Videos, Documents, Audio, Code, Archives**, and more. This helps keep directories like **Downloads, project folders, or working directories clean and structured**.
+It scans a folder, detects file types, and moves them into categorized folders such as **Images, Videos, Documents, Audio, Code, Archives**, and more — keeping directories like **Downloads or project folders clean and structured.**
 
 ---
 
@@ -14,7 +14,11 @@ The script scans a folder, detects file types, and moves them into categorized f
 * Moves files into the appropriate folder
 * Places unknown file types into an **Others** folder
 * Skips directories while scanning
-* Cleans previously organized `Others` folder when the script is run again
+* Cleans previously organized `Others` folder when the script is run again 
+* Handles duplicate filenames safely (no overwrites)
+* Command-line interface (CLI)
+* Dry Run mode to preview changes without modifying files
+
 
 ---
 
@@ -72,19 +76,39 @@ Others/
 
 ## Usage
 
-1. Open `main.py`.
+1. Open Termianl.
 
-2. Set the directory you want to organize:
+2. Basic Command:
 
-```python
-directory = "path/to/your/folder"
+```Terminal
+python main.py organize <directory_path>
 ```
 
-3. Run the script:
+3. Dry Run Mode (Preview Only):
 
 ```
-python main.py
+python main.py organize ./example_folder --dry-run
 ```
+
+Output example:
+
+```
+[DRY RUN] photo.png → Images/
+[DRY RUN] music.mp3 → Audio/
+```
+
+---
+
+## Notes
+Existing files with the same name will not be overwritten
+→ They will be renamed automatically like:
+
+```
+file(1).jpg, file(2).jpg, ...
+```
+
+Dry run mode does not create folders or move files
+
 
 The script will automatically scan the folder and organize all files.
 
